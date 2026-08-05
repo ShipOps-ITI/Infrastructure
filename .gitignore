@@ -1,0 +1,32 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform/
+**/.terraform/
+.terraform.tfstate.lock.info
+**/.terraform.tfstate.lock.info
+.terraform.lock.hcl
+**/.terraform.lock.hcl
+
+# Local environment files
+*.log
+*.backup
+*.zip
+*.tmp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+*~
