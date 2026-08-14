@@ -19,7 +19,7 @@ variable "private_subnet_ids" {
 }
 
 variable "public_subnet_ids" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 
@@ -76,6 +76,11 @@ variable "node_labels" {
 variable "tags" {
   type    = map(string)
   default = {}
+}
+
+variable "authentication_mode" {
+  type    = string
+  default = "API_AND_CONFIG_MAP"
 }
 
 variable "irsa_service_accounts" {
