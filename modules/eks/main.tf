@@ -20,7 +20,7 @@ locals {
       for idx, policy_arn in sa.policy_arns : {
         role_key   = "${sa.namespace}-${sa.name}"
         attachment = "${sa.namespace}-${sa.name}-${idx}"
-        policy_arn = policy_arn 
+        policy_arn = policy_arn
       }
     ]
   ])
@@ -60,11 +60,15 @@ resource "aws_eks_cluster" "this" {
   role_arn = aws_iam_role.eks_cluster.arn
   version  = var.cluster_version
 
+  access_config {
+    authentication_mode = var.authentication_mode
+  }
+
   vpc_config {
-    subnet_ids            = var.private_subnet_ids
+    subnet_ids              = var.private_subnet_ids
     endpoint_private_access = var.endpoint_private_access
     endpoint_public_access  = var.endpoint_public_access
-    public_access_cidrs   = []
+    public_access_cidrs     = []
   }
 
   enabled_cluster_log_types = ["api", "audit", "authenticator"]
@@ -116,13 +120,13 @@ resource "aws_iam_role_policy_attachment" "node_ecr_read_only" {
 }
 
 resource "aws_eks_node_group" "this" {
-  cluster_name    = aws_eks_cluster.this.name
-  node_role_arn   = aws_iam_role.eks_node_group.arn
-  subnet_ids      = var.private_subnet_ids
-  instance_types  = var.node_instance_types
-  ami_type        = var.node_ami_type
-  disk_size       = var.node_disk_size
-  labels          = var.node_labels
+  cluster_name   = aws_eks_cluster.this.name
+  node_role_arn  = aws_iam_role.eks_node_group.arn
+  subnet_ids     = var.private_subnet_ids
+  instance_types = var.node_instance_types
+  ami_type       = var.node_ami_type
+  disk_size      = var.node_disk_size
+  labels         = var.node_labels
 
   scaling_config {
     desired_size = var.node_group_desired_size
