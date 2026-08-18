@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  type: gp3
+  fsType: ext4
+reclaimPolicy: Delete
+
+# Notes:
+# - Apply this manifest after the `aws-ebs-csi-driver` addon reaches ACTIVE.
+# - You can change `type` to gp2/gp3 or specify iops/throughput parameters if needed.

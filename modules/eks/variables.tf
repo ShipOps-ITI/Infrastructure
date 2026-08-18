@@ -25,7 +25,7 @@ variable "public_subnet_ids" {
 
 variable "cluster_version" {
   type    = string
-  default = "1.31"
+  default = "1.30"
 }
 
 variable "endpoint_private_access" {

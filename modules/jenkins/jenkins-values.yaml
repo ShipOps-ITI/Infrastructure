@@ -1,0 +1,29 @@
+controller:
+  image: "jenkins/jenkins:lts"
+  serviceType: ClusterIP
+  installPlugins:
+    - kubernetes:1.32.0
+    - workflow-aggregator:2.6
+    - credentials-binding:1.27
+    - git:4.15.0
+
+persistence:
+  enabled: true
+  existingClaim: ""
+  storageClass: ebs-sc
+  size: 20Gi
+
+# Resource requests for the controller; you can adjust if nodes are small
+resources:
+  requests:
+    cpu: "500m"
+    memory: "1Gi"
+  limits:
+    cpu: "1"
+    memory: "2Gi"
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true

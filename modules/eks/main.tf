@@ -73,6 +73,12 @@ resource "aws_eks_cluster" "this" {
 
   enabled_cluster_log_types = ["api", "audit", "authenticator"]
   tags                      = local.common_tags
+  lifecycle {
+    # avoid accidental EKS version upgrades/rollbacks from local variable drift
+    ignore_changes = [
+      version,
+    ]
+  }
 }
 
 data "tls_certificate" "oidc" {
