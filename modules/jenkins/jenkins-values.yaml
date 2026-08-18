@@ -4,11 +4,6 @@ controller:
     tag: lts
     pullPolicy: Always
   serviceType: ClusterIP
-  installPlugins:
-    - kubernetes:1.32.0
-    - workflow-aggregator:2.6
-    - credentials-binding:1.27
-    - git:4.15.0
 
 persistence:
   enabled: true
