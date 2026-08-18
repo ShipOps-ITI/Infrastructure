@@ -1,5 +1,8 @@
 controller:
-  image: "jenkins/jenkins:lts"
+  image:
+    repository: jenkins/jenkins
+    tag: lts
+    pullPolicy: Always
   serviceType: ClusterIP
   installPlugins:
     - kubernetes:1.32.0
