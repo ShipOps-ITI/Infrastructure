@@ -21,3 +21,7 @@ output "eks_node_group_role_arn" {
 output "eks_irsa_role_arns" {
   value = module.eks.irsa_role_arns
 }
+
+output "ecr_repository_urls" {
+  value = module.ecr.repository_urls
+}

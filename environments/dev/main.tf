@@ -66,6 +66,16 @@ module "eks" {
   irsa_service_accounts = var.irsa_service_accounts
 }
 
+module "ecr" {
+  source = "../../modules/ecr"
+
+  project_name     = var.project_name
+  environment      = var.environment
+  repository_names = var.ecr_repository_names
+  scan_on_push     = true
+  max_image_count  = var.ecr_max_image_count
+}
+
 resource "aws_vpc_security_group_ingress_rule" "eks_from_bastion" {
   security_group_id            = module.eks.cluster_security_group_id
   referenced_security_group_id = module.bastion.security_group_id

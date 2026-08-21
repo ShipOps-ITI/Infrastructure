@@ -131,3 +131,15 @@ variable "irsa_service_accounts" {
   }))
   default = []
 }
+
+variable "ecr_repository_names" {
+  description = "List of ECR repository names to create"
+  type        = list(string)
+  default     = ["auth", "core", "shipment", "documents", "frontend", "ai", "payment"]
+}
+
+variable "ecr_max_image_count" {
+  description = "Max images to retain per ECR repository"
+  type        = number
+  default     = 10
+}
