@@ -106,7 +106,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   create_namespace = false
 
   # Pin a reasonably recent stable version; you can adjust as needed
-  version = "1.11.3"
+  version = "1.17.1"
 
   values = [yamlencode({
     clusterName = module.eks.cluster_name,
