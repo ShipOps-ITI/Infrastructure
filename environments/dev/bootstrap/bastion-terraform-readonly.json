@@ -1,0 +1,22 @@
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":[
+        "iam:GetRole","iam:GetRolePolicy","iam:ListRolePolicies","iam:ListAttachedRolePolicies","iam:ListRoles"
+      ],
+      "Resource":"*"
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "ec2:DescribeImages","ec2:DescribeAddresses","ec2:DescribeAddressesAttribute",
+        "ec2:DescribeVpcs","ec2:DescribeVpcAttribute","ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups","ec2:DescribeInstances",
+        "ec2:DescribeAvailabilityZones","ec2:DescribeRouteTables","ec2:DescribeNatGateways"
+      ],
+      "Resource":"*"
+    }
+  ]
+}
